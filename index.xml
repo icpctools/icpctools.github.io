@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on The ICPC Tools</title>
+    <link>https://icpctools.org/</link>
+    <description>Recent content in Home on The ICPC Tools</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Nov 2019 21:10:52 +0100</lastBuildDate>
+    
+	<atom:link href="https://icpctools.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CDS</title>
+      <link>https://icpctools.org/cds/</link>
+      <pubDate>Tue, 12 Nov 2019 21:20:38 +0100</pubDate>
+      
+      <guid>https://icpctools.org/cds/</guid>
+      <description>The Contest Data Server (CDS) is a software component designed to allow secure, authenticated HTTP connections to contest data residing on a contest network. It provides REST entry points for accessing a variety of contest-related services, allowing clients to access those services via standard HTTP requests.
+The CDS provides authentication services using configuration data supplied by the Contest Administrator (CA). Authenticated users can be assigned roles by the CA; user access to specific services is governed by the role(s) assigned to them.</description>
+    </item>
+    
+    <item>
+      <title>Resolver</title>
+      <link>https://icpctools.org/resolver/</link>
+      <pubDate>Tue, 12 Nov 2019 21:20:38 +0100</pubDate>
+      
+      <guid>https://icpctools.org/resolver/</guid>
+      <description>The ICPC Resolver is a tool for graphical animation of contest results. It shows the final runs submitted during a contest in an interesting way, and leads up to display of the award winners. The Resolver concept was created by Fredrik Niemela and Mattias de Zalenski at KTH Royal Technical University. The ICPC Tools Resolver implementation was developed by Tim deBoer of IBM Corporation.
+The Resolver is designed to be used in contests where the scoreboard is &amp;ldquo;frozen&amp;rdquo; prior to the end of the contest - that is, where the result of runs submitted in the last part of the contest are not displayed on the scoreboard (such runs are typically marked as &amp;ldquo;pending&amp;rdquo;).</description>
+    </item>
+    
+    <item>
+      <title>Presentation Admin</title>
+      <link>https://icpctools.org/pres-admin/</link>
+      <pubDate>Sun, 15 Dec 2019 11:40:23 +0100</pubDate>
+      
+      <guid>https://icpctools.org/pres-admin/</guid>
+      <description>The Presentation Admin is one of the components comprising the ICPC Presentation System. The other major components of the Presentation System are the Presentation Client and a collection of presentations.
+The ICPC Presentation System defines a large number of built-in &amp;ldquo;presentations&amp;rdquo;, each of which displays programming contest-related data in some fashion. For example, one presentation shows the current contest scoreboard, scrolling it automatically from the current leaders down through all contenders and then repeating.</description>
+    </item>
+    
+    <item>
+      <title>Presentation Client</title>
+      <link>https://icpctools.org/pres-client/</link>
+      <pubDate>Sun, 15 Dec 2019 11:42:54 +0100</pubDate>
+      
+      <guid>https://icpctools.org/pres-client/</guid>
+      <description>The ICPC Presentation System provides a mechanism for generating &amp;ldquo;slide show&amp;rdquo; presentations containing user-provided images, photos, and a variety of live data from a running contest. The Presentation System consists of two components: Presentation Clients and the Presentation Admin. This document describes the Presentation Client component; refer to the separate documentation on the Presentation Admin for an explanation of how that component operates.
+A Presentation Client is a single process which displays (rotates between) one or more presentations.</description>
+    </item>
+    
+    <item>
+      <title>Balloon Utility</title>
+      <link>https://icpctools.org/balloon-util/</link>
+      <pubDate>Sun, 15 Dec 2019 11:45:34 +0100</pubDate>
+      
+      <guid>https://icpctools.org/balloon-util/</guid>
+      <description>The ICPC Balloon Utility (BU) is a tool for keeping track of balloons earned by contest teams for successful run submissions. It receives submission information from one of several input sources, displays information about each submission (such as the problem, team, run ID, school, submission time, etc.) and optionally automatically prints &amp;ldquo;balloon notification&amp;rdquo; messages to assist runners in delivering balloons. It also provides runners with an interactive mechanism for tracking delivered balloons, and is even capable of printing maps showing runners where to go find the appropriate balloon and where on the contest floor the receiving team is located (although instructions for configuring it to do that are beyond the scope of this introductory guide).</description>
+    </item>
+    
+    <item>
+      <title>Coach View</title>
+      <link>https://icpctools.org/coach-view/</link>
+      <pubDate>Sun, 15 Dec 2019 11:46:23 +0100</pubDate>
+      
+      <guid>https://icpctools.org/coach-view/</guid>
+      <description>The Coach View is a software component designed to provide the ability for spectators (coaches as well as other interested people) to view either or both of a selected team&#39;s desktop (machine screen) or web camera during a contest. It requires that the Contest Administrator configure desktop and/or webcam streaming from team machines during the contest, and also requires a Contest API source that implements video streaming, for example the ICPC Tools Contest Data Server.</description>
+    </item>
+    
+    <item>
+      <title>Problem Set Editor</title>
+      <link>https://icpctools.org/problem-set-editor/</link>
+      <pubDate>Sun, 15 Dec 2019 11:50:32 +0100</pubDate>
+      
+      <guid>https://icpctools.org/problem-set-editor/</guid>
+      <description>The ICPC Problem Set Editor is a tool for creating and editing problemset.yaml files, which define the list of contest problems and their colors for a CLICS-compliant Contest Control System (CCS).
+Download  The latest stable Problem Set Editor version is 2.0.1796, released on 18 December 2019.   Download stable Problem Set Editor (version 2.0.1796)  The latest prerelease Problem Set Editor version is 2.2.257, released on 21 December 2019.</description>
+    </item>
+    
+    <item>
+      <title>Contest Utilities</title>
+      <link>https://icpctools.org/contest-utils/</link>
+      <pubDate>Sun, 15 Dec 2019 11:51:23 +0100</pubDate>
+      
+      <guid>https://icpctools.org/contest-utils/</guid>
+      <description>The contest utilities provide a number of tools for working with contest data, contest control systems, and the contest data server.
+Download  The latest stable Contest Utilities version is 2.0.1797, released on 18 December 2019.   Download stable Contest Utilities (version 2.0.1797)  The latest prerelease Contest Utilities version is 2.2.257, released on 21 December 2019.   Download prerelease Contest Utilities (version 2.2.257) </description>
+    </item>
+    
+    <item>
+      <title>All builds</title>
+      <link>https://icpctools.org/all-builds/</link>
+      <pubDate>Sun, 15 Dec 2019 11:52:23 +0100</pubDate>
+      
+      <guid>https://icpctools.org/all-builds/</guid>
+      <description>Below you will find all the available builds for the ICPC Tools. Most builds also have a .sha256 and .sha512 file, which can be used to validate the downloads.
+  Version 2.2.257   Build date 21 December 2019   Build time 16:08:56      Tool Size Downloads     CDS (WLP) 48.89 MB  wlp.CDS-2.2.257.zip (sha256, sha512)    CDS (JAR) 2.</description>
+    </item>
+    
+  </channel>
+</rss>

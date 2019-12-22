@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>The ICPC Tools  | Resolver</title>
+
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">
+    <link rel="stylesheet" href="/css/icpctools.css">
+
+    <meta name="generator" content="Hugo 0.61.0" />
+
+    <meta property="og:title" content="Resolver" />
+<meta property="og:description" content="The ICPC Resolver is a tool for graphical animation of contest results. It shows the final runs submitted during a contest in an interesting way, and leads up to display of the award winners. The Resolver concept was created by Fredrik Niemela and Mattias de Zalenski at KTH Royal Technical University. The ICPC Tools Resolver implementation was developed by Tim deBoer of IBM Corporation.
+The Resolver is designed to be used in contests where the scoreboard is &ldquo;frozen&rdquo; prior to the end of the contest - that is, where the result of runs submitted in the last part of the contest are not displayed on the scoreboard (such runs are typically marked as &ldquo;pending&rdquo;)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icpctools.org/resolver/" />
+<meta property="article:published_time" content="2019-11-12T21:20:38+01:00" />
+<meta property="article:modified_time" content="2019-11-12T21:20:38+01:00" />
+<meta itemprop="name" content="Resolver">
+<meta itemprop="description" content="The ICPC Resolver is a tool for graphical animation of contest results. It shows the final runs submitted during a contest in an interesting way, and leads up to display of the award winners. The Resolver concept was created by Fredrik Niemela and Mattias de Zalenski at KTH Royal Technical University. The ICPC Tools Resolver implementation was developed by Tim deBoer of IBM Corporation.
+The Resolver is designed to be used in contests where the scoreboard is &ldquo;frozen&rdquo; prior to the end of the contest - that is, where the result of runs submitted in the last part of the contest are not displayed on the scoreboard (such runs are typically marked as &ldquo;pending&rdquo;).">
+<meta itemprop="datePublished" content="2019-11-12T21:20:38&#43;01:00" />
+<meta itemprop="dateModified" content="2019-11-12T21:20:38&#43;01:00" />
+<meta itemprop="wordCount" content="414">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Resolver"/>
+<meta name="twitter:description" content="The ICPC Resolver is a tool for graphical animation of contest results. It shows the final runs submitted during a contest in an interesting way, and leads up to display of the award winners. The Resolver concept was created by Fredrik Niemela and Mattias de Zalenski at KTH Royal Technical University. The ICPC Tools Resolver implementation was developed by Tim deBoer of IBM Corporation.
+The Resolver is designed to be used in contests where the scoreboard is &ldquo;frozen&rdquo; prior to the end of the contest - that is, where the result of runs submitted in the last part of the contest are not displayed on the scoreboard (such runs are typically marked as &ldquo;pending&rdquo;)."/>
+
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="/">The ICPC Tools</a>
+        </li>
+    </ul>
+</nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/" class="brand-link">
+        <img src="/img/logo.png" alt="ICPC Tools Logo" class="brand-image img-circle elevation-3"/>
+        <span class="brand-text font-weight-light">ICPC Tools</span>
+    </a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/">
+                            <i class="fas fa-home"></i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/cds/">
+                            <i class="fas fa-server"></i>
+                            <p>CDS</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/resolver/">
+                            <i class="fas fa-list-ol"></i>
+                            <p>Resolver</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/pres-admin/">
+                            <i class="fas fa-user-cog"></i>
+                            <p>Presentation Admin</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/pres-client/">
+                            <i class="fas fa-desktop"></i>
+                            <p>Presentation Client</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/balloon-util/">
+                            <i class="fas fa-print"></i>
+                            <p>Balloon Utility</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/coach-view/">
+                            <i class="fas fa-binoculars"></i>
+                            <p>Coach View</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/problem-set-editor/">
+                            <i class="fas fa-file-alt"></i>
+                            <p>Problem Set Editor</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/contest-utils/">
+                            <i class="fas fa-wrench"></i>
+                            <p>Contest Utilities</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/all-builds/">
+                            <i class="fas fa-download"></i>
+                            <p>All builds</p>
+                        </a>
+                    </li>
+                
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <h1 class="m-0 text-dark">Resolver</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>The <em>ICPC Resolver</em> is a tool for graphical animation of contest results.
+It shows the final runs submitted during a contest in an
+interesting way, and leads up to display of the award winners.
+The Resolver concept was created by Fredrik Niemela and Mattias de Zalenski
+at KTH Royal Technical University.
+The ICPC Tools Resolver implementation was developed by Tim deBoer of
+IBM Corporation.</p>
+<p>The Resolver is designed to be used in contests where the scoreboard is &ldquo;frozen&rdquo;
+prior to the end of the contest - that is, where the result of runs submitted in the
+last part of the contest are not displayed on the scoreboard
+(such runs are typically marked as &ldquo;pending&rdquo;).
+The Resolver produces a dynamic display by stepping through (&ldquo;resolving&rdquo;) pending runs
+and generating displays showing the contest winners in ranked order,
+along with citations for awards earned.</p>
+<p>After displaying an introductory &ldquo;splash screen&rdquo;,
+a single keystroke or mouse click causes the Resolver
+to display the contest standings as of the time the scoreboard was frozen.
+A key or mouse click then causes it to advance to the bottom of the standings;
+a subsequent key/click starts the &ldquo;resolving&rdquo; process:
+starting at the bottom, it moves up until it reaches a team that has one or more
+pending submissions during the freeze time.
+Each pending run is &lsquo;resolved&rsquo; (to either a &ldquo;yes&rdquo; or &ldquo;no&rdquo; judgment),
+and if the run was successful the team
+will move &lsquo;up&rsquo; into their new position based on the results.</p>
+<p>Options allow you to configure when the resolver pauses, but by default it will
+continue moving up and resolving until it gets to an &lsquo;interesting&rsquo; case -
+typically a first-to-solve award, a &ldquo;group&rdquo; or &ldquo;region&rdquo; winner,
+or a gold/silver/bronze award winner. When it reaches an award, the resolver will pause
+and switch to a screen showing the team name,
+the logo and image (if available from a CDS; see below), and an award citation.
+Once the award has been handed out, clicking returns to the regular Resolver
+screen and continues the resolving process.</p>
+<p>A variety of options are available, including managing the speed at which the
+Resolver runs, controlling various &ldquo;single-step&rdquo; operations,
+configuring categories of awards to be acknowledged during the resolving
+process, and controlling simultaneous Resolver operations at multiple contest sites.</p>
+
+
+
+
+
+<h2>Download</h2>
+<p>
+    The latest stable Resolver version is 2.0.1798, released on 18 December 2019.
+</p>
+<p>
+    <a class="btn btn-primary" href="https://github.com/icpctools/builds/releases/download/v2.0.1798/resolver-2.0.1798.zip"><i class="fas fa-download"></i> Download stable <i>Resolver</i> (version 2.0.1798)</a>
+</p>
+<p>
+    The latest prerelease Resolver version is 2.2.257, released on 21 December 2019.
+</p>
+<p>
+    <a class="btn btn-danger" href="https://github.com/icpctools/builds/releases/download/v2.2.257/resolver-2.2.257.zip"><i class="fas fa-download"></i> Download prerelease <i>Resolver</i> (version 2.2.257)</a>
+</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    <strong>Copyright &copy; the ICPC</strong> -
+    Generated on Sunday 22 December 2019 09:35:40 UTC
+</footer>
+
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/adminlte.min.js"></script>
+</body>
+</html>

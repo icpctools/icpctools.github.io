@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>The ICPC Tools  | CDS</title>
+
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">
+    <link rel="stylesheet" href="/css/icpctools.css">
+
+    <meta name="generator" content="Hugo 0.61.0" />
+
+    <meta property="og:title" content="CDS" />
+<meta property="og:description" content="The Contest Data Server (CDS) is a software component designed to allow secure, authenticated HTTP connections to contest data residing on a contest network. It provides REST entry points for accessing a variety of contest-related services, allowing clients to access those services via standard HTTP requests.
+The CDS provides authentication services using configuration data supplied by the Contest Administrator (CA). Authenticated users can be assigned roles by the CA; user access to specific services is governed by the role(s) assigned to them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icpctools.org/cds/" />
+<meta property="article:published_time" content="2019-11-12T21:20:38+01:00" />
+<meta property="article:modified_time" content="2019-11-12T21:20:38+01:00" />
+<meta itemprop="name" content="CDS">
+<meta itemprop="description" content="The Contest Data Server (CDS) is a software component designed to allow secure, authenticated HTTP connections to contest data residing on a contest network. It provides REST entry points for accessing a variety of contest-related services, allowing clients to access those services via standard HTTP requests.
+The CDS provides authentication services using configuration data supplied by the Contest Administrator (CA). Authenticated users can be assigned roles by the CA; user access to specific services is governed by the role(s) assigned to them.">
+<meta itemprop="datePublished" content="2019-11-12T21:20:38&#43;01:00" />
+<meta itemprop="dateModified" content="2019-11-12T21:20:38&#43;01:00" />
+<meta itemprop="wordCount" content="285">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CDS"/>
+<meta name="twitter:description" content="The Contest Data Server (CDS) is a software component designed to allow secure, authenticated HTTP connections to contest data residing on a contest network. It provides REST entry points for accessing a variety of contest-related services, allowing clients to access those services via standard HTTP requests.
+The CDS provides authentication services using configuration data supplied by the Contest Administrator (CA). Authenticated users can be assigned roles by the CA; user access to specific services is governed by the role(s) assigned to them."/>
+
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="/">The ICPC Tools</a>
+        </li>
+    </ul>
+</nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/" class="brand-link">
+        <img src="/img/logo.png" alt="ICPC Tools Logo" class="brand-image img-circle elevation-3"/>
+        <span class="brand-text font-weight-light">ICPC Tools</span>
+    </a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/">
+                            <i class="fas fa-home"></i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/cds/">
+                            <i class="fas fa-server"></i>
+                            <p>CDS</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/resolver/">
+                            <i class="fas fa-list-ol"></i>
+                            <p>Resolver</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/pres-admin/">
+                            <i class="fas fa-user-cog"></i>
+                            <p>Presentation Admin</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/pres-client/">
+                            <i class="fas fa-desktop"></i>
+                            <p>Presentation Client</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/balloon-util/">
+                            <i class="fas fa-print"></i>
+                            <p>Balloon Utility</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/coach-view/">
+                            <i class="fas fa-binoculars"></i>
+                            <p>Coach View</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/problem-set-editor/">
+                            <i class="fas fa-file-alt"></i>
+                            <p>Problem Set Editor</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/contest-utils/">
+                            <i class="fas fa-wrench"></i>
+                            <p>Contest Utilities</p>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link " href="/all-builds/">
+                            <i class="fas fa-download"></i>
+                            <p>All builds</p>
+                        </a>
+                    </li>
+                
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <h1 class="m-0 text-dark">CDS</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>The Contest Data Server (CDS) is a software component designed to allow secure,
+authenticated HTTP connections to contest data residing on a contest network.
+It provides <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>
+entry points for accessing a variety of contest-related services, allowing clients
+to access those services via standard HTTP requests.</p>
+<p>The CDS provides authentication services using configuration
+data supplied by the Contest Administrator (CA).
+Authenticated users can be assigned <em>roles</em> by the CA; user access
+to specific services is governed by the role(s) assigned to them.</p>
+<p>The set of services made available by the CDS is dependent on the facilities available on the contest network.
+Examples of services which the CDS knows how to support (assuming that the contest network provides the back-end data
+required and that the CA configures their use into the CDS) include</p>
+<ul>
+<li>an overview description of the contest (title, date, etc.)</li>
+<li>a Countdown Clock for the start of the contest</li>
+<li>the current contest time (time remaining in the contest)</li>
+<li>the contest configuration, as defined by any of several standard file types (contest.yaml, problemset.yaml, teams.tsv, etc.)</li>
+<li>the current backup copy of any specified team's home directory</li>
+<li>the event feed as provided by the Contest Control System (CCS)</li>
+<li>images for each team and for each team's University Logo</li>
+<li>&ldquo;reaction videos&rdquo; showing a team's web camera at the moment they received a run submission response from the judges</li>
+<li>the current contest scoreboard</li>
+<li>an RSS feed for the contest</li>
+<li>the set of files which a team submitted to the judges for a specific run</li>
+</ul>
+
+
+
+
+
+<h2>Download</h2>
+<p>
+    The latest stable CDS version is 2.0.1797, released on 18 December 2019.
+</p>
+<p>
+    <a class="btn btn-primary" href="https://github.com/icpctools/builds/releases/download/v2.0.1798/wlp.CDS-2.0.1797.zip"><i class="fas fa-download"></i> Download stable <i>CDS</i> (version 2.0.1797)</a>
+</p>
+<p>
+    The latest prerelease CDS version is 2.2.257, released on 21 December 2019.
+</p>
+<p>
+    <a class="btn btn-danger" href="https://github.com/icpctools/builds/releases/download/v2.2.257/wlp.CDS-2.2.257.zip"><i class="fas fa-download"></i> Download prerelease <i>CDS</i> (version 2.2.257)</a>
+</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    <strong>Copyright &copy; the ICPC</strong> -
+    Generated on Sunday 22 December 2019 09:35:40 UTC
+</footer>
+
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/adminlte.min.js"></script>
+</body>
+</html>

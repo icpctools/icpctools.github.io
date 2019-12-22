@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://icpctools.org/</loc>
+    <lastmod>2019-11-12T21:10:52+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/cds/</loc>
+    <lastmod>2019-11-12T21:20:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/resolver/</loc>
+    <lastmod>2019-11-12T21:20:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/pres-admin/</loc>
+    <lastmod>2019-12-15T11:40:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/pres-client/</loc>
+    <lastmod>2019-12-15T11:42:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/balloon-util/</loc>
+    <lastmod>2019-12-15T11:45:34+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/coach-view/</loc>
+    <lastmod>2019-12-15T11:46:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/problem-set-editor/</loc>
+    <lastmod>2019-12-15T11:50:32+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/contest-utils/</loc>
+    <lastmod>2019-12-15T11:51:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://icpctools.org/all-builds/</loc>
+    <lastmod>2019-12-15T11:52:23+01:00</lastmod>
+  </url>
+  
+</urlset>
