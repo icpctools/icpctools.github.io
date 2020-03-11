@@ -96,7 +96,7 @@ Download  The latest stable Contest Utilities version is 2.0.1797, released on 1
       
       <guid>https://icpctools.org/all-builds/</guid>
       <description>Below you will find all the available builds for the ICPC Tools. Most builds also have a .sha256 and .sha512 file, which can be used to validate the downloads.
-  Version 2.2.348   Build date 11 March 2020   Build time 19:35:25      Tool Size Downloads     CDS (JAR) 2.66 MB  CDS-2.2.348.zip (sha256, sha512)    Resolver 15.46 MB  resolver-2.</description>
+  Version 2.2.348   Build date 11 March 2020   Build time 19:35:25      Tool Size Downloads     CDS (WLP) 49.11 MB  wlp.CDS-2.2.348.zip (sha256, sha512)    CDS (JAR) 2.</description>
     </item>
     
   </channel>
