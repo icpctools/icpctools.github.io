@@ -72,7 +72,7 @@ A Presentation Client is a single process which displays (rotates between) one o
       
       <guid>https://tools.icpc.global/problem-set-editor/</guid>
       <description>The ICPC Problem Set Editor is a tool for creating and editing problemset.yaml files, which define the list of contest problems and their colors for a CLICS-compliant Contest Control System (CCS).
-Download  The latest stable Problem Set Editor version is 2.2.436, released on 08 February 2021.   Download stable Problem Set Editor (version 2.2.436)  The latest prerelease Problem Set Editor version is 2.3.437, released on 08 February 2021.</description>
+Download  The latest stable Problem Set Editor version is 2.2.436, released on 08 February 2021.   Download stable release v2.2.436  The latest prerelease is v2.3.438, built on 08 February 2021.   Download prerelease build v2.3.438 Documentation  The Problem Set Editor documentation can also be downloaded.</description>
     </item>
     
     <item>
@@ -82,7 +82,7 @@ Download  The latest stable Problem Set Editor version is 2.2.436, released on 0
       
       <guid>https://tools.icpc.global/contest-utils/</guid>
       <description>The contest utilities provide a number of tools for working with contest data, contest control systems, and the contest data server.
-Download  The latest stable Contest Utilities version is 2.2.436, released on 08 February 2021.   Download stable Contest Utilities (version 2.2.436)  The latest prerelease Contest Utilities version is 2.3.437, released on 08 February 2021.   Download prerelease Contest Utilities (version 2.3.437) Documentation  The Contest Utilities documentation can also be downloaded.</description>
+Download  The latest stable Contest Utilities version is 2.2.436, released on 08 February 2021.   Download stable release v2.2.436  The latest prerelease is v2.3.438, built on 08 February 2021.   Download prerelease build v2.3.438 Documentation  The Contest Utilities documentation can also be downloaded.   Download / view documentation (PDF format) </description>
     </item>
     
     <item>
@@ -91,7 +91,7 @@ Download  The latest stable Contest Utilities version is 2.2.436, released on 08
       <pubDate>Fri, 08 Jan 2021 20:43:00 +0100</pubDate>
       
       <guid>https://tools.icpc.global/changelog/</guid>
-      <description>Below you can find the changelog of the ICPC Tools. It is automatically updated when a new build is crated.
+      <description>You can find the changelog of the ICPC Tools below. It is automatically updated when a new build is created.
 V2.2 - February, 2021   First open release! Moved to Github and Gitlab. Moved to new hostname and website. New logo and icons! Common command line parser and further command line consistency. XML event feed removed everywhere but CDS. If your CCS only supports the XML feed, you must use the CDS as a proxy to use the other tools.</description>
     </item>
     
@@ -102,7 +102,7 @@ V2.2 - February, 2021   First open release! Moved to Github and Gitlab. Moved to
       
       <guid>https://tools.icpc.global/all-builds/</guid>
       <description>Below you will find all the available builds for the ICPC Tools. Most builds also have a .sha256 and .sha512 file, which can be used to validate the downloads.
-  Version 2.3.437   Build date 08 February 2021   Build time 18:58:42      Tool Size Downloads     CDS (Open Liberty) 52.15 MB  wlp.CDS-2.3.437.zip (sha256, sha512)    CDS (WAR only) 3.</description>
+  Version 2.3.438   Build date 08 February 2021   Build time 19:17:56      Tool Size Downloads     CDS (Open Liberty) 52.15 MB  wlp.CDS-2.3.438.zip (sha256, sha512)    CDS (WAR only) 3.</description>
     </item>
     
   </channel>
