@@ -28,7 +28,7 @@
 <meta itemprop="description" content="View the changelog of the ICPC Tools">
 <meta itemprop="datePublished" content="2021-01-08T20:43:00+01:00" />
 <meta itemprop="dateModified" content="2021-01-08T20:43:00+01:00" />
-<meta itemprop="wordCount" content="1010">
+<meta itemprop="wordCount" content="1194">
 
 
 
@@ -161,22 +161,59 @@
 <h4 id="v24---tbd">V2.4 - TBD</h4>
 <hr>
 <ul>
+<li>Java 17 support! (this will be the last release supporting Java 8)</li>
+<li>Apple M1 support!</li>
 <li>Contest API improvements:
 <ul>
-<li>SVG image support throughout.</li>
+<li>SVG images.</li>
 <li>Language entry points.</li>
-<li>Support for country flags.</li>
+<li>Country flags.</li>
+<li>Commentary.</li>
+<li>Scoring contests (beta).</li>
 </ul>
 </li>
-<li>Several fixes based on use at regional contests.</li>
+<li>Support for the Contest archive format: <a href="https://ccs-specs.icpc.io/draft/contest_archive_format">https://ccs-specs.icpc.io/draft/contest_archive_format</a>.</li>
+<li>Several fixes based on use at regional and world finals contests.</li>
 <li>CDS:
 <ul>
 <li>UI improvements, new welcome page.</li>
+<li>Support for multiple machines (streams, backups, key logs, etc) per team.</li>
+<li>Host support for identifying team machines.</li>
+<li>Direct video mode, just expose existing URLs.</li>
+<li>More than one CDS? You can name them to tell the web pages apart.</li>
+<li>Improved time syncing for clients.</li>
 </ul>
 </li>
 <li>Presentation client:
 <ul>
+<li>Emojis! Woo hoo! Supported for team names, messages, and a few more. Please let us know if you need it anywhere else.</li>
+<li>Light mode support for most presentations.</li>
+<li>Updated problem summary presentation.</li>
 <li>Initial Commentary presentation.</li>
+<li>Performance and UI improvements (e.g. text fitting) to many presentations, especially &lsquo;tile&rsquo; scoreboards.</li>
+</ul>
+</li>
+<li>Presentation admin:
+<ul>
+<li>Dark mode (when supported by JDK and system default).</li>
+</ul>
+</li>
+<li>Coach view:
+<ul>
+<li>Support for multiple streams per team.</li>
+<li>Dark mode (when supported by JDK and system default).</li>
+</ul>
+</li>
+<li>Resolver:
+<ul>
+<li>Support for display modes for every award: a detailed screen, pause and move on, display a list, or ignore any award.</li>
+<li>Honors and Top award templates.</li>
+</ul>
+</li>
+<li>Award UI:
+<ul>
+<li>Better support for award templates.</li>
+<li>Dark mode (when supported by JDK and system default).</li>
 </ul>
 </li>
 </ul>
@@ -448,7 +485,7 @@
 
     <footer class="main-footer">
     <strong>Copyright &copy; the ICPC</strong> -
-    Generated on Tuesday 2 November 2021 19:04:23 UTC
+    Generated on Tuesday 2 November 2021 19:49:49 UTC
 </footer>
 
 </body>
