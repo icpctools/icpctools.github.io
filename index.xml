@@ -72,7 +72,7 @@ A Presentation Client is a single process which displays (rotates between) one o
       
       <guid>https://tools.icpc.global/problem-set-editor/</guid>
       <description>The ICPC Problem Set Editor is a tool for creating and editing problemset.yaml files, which define the list of contest problems and their colors for a Contest Control System (CCS) that supports the CCS Specification.
-Download  The latest stable Problem Set Editor version is 2.3.491, released on 29 March 2021.   Download stable release v2.3.491  The latest prerelease is v2.4.727, built on 03 April 2022.   Download prerelease build v2.</description>
+Download  The latest stable Problem Set Editor version is 2.4.727, released on 03 April 2022.   Download stable release v2.4.727  The latest prerelease is v2.4.726, built on 01 April 2022.   Download prerelease build v2.</description>
     </item>
     
     <item>
@@ -82,7 +82,7 @@ Download  The latest stable Problem Set Editor version is 2.3.491, released on 2
       
       <guid>https://tools.icpc.global/contest-utils/</guid>
       <description>The contest utilities provide a number of tools for working with contest data, contest control systems, and the contest data server.
-Download  The latest stable Contest Utilities version is 2.3.491, released on 29 March 2021.   Download stable release v2.3.491  The latest prerelease is v2.4.727, built on 03 April 2022.   Download prerelease build v2.4.727 Documentation  The Contest Utilities documentation can also be downloaded.   Download / view documentation (PDF format) </description>
+Download  The latest stable Contest Utilities version is 2.4.727, released on 03 April 2022.   Download stable release v2.4.727  The latest prerelease is v2.4.726, built on 01 April 2022.   Download prerelease build v2.4.726 Documentation  The Contest Utilities documentation can also be downloaded.   Download / view documentation (PDF format) </description>
     </item>
     
     <item>
