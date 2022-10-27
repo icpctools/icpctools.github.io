@@ -28,7 +28,7 @@
 <meta itemprop="description" content="View the changelog of the ICPC Tools">
 <meta itemprop="datePublished" content="2021-01-08T20:43:00+01:00" />
 <meta itemprop="dateModified" content="2021-01-08T20:43:00+01:00" />
-<meta itemprop="wordCount" content="1257">
+<meta itemprop="wordCount" content="1333">
 
 
 
@@ -161,19 +161,33 @@
 <h4 id="v25---tbd">V2.5 - TBD</h4>
 <hr>
 <ul>
-<li>Contest API improvements:
-<ul>
-<li>Will be first release to support breaking changes in next spec release.</li>
-</ul>
-</li>
+<li>First release supporting the 2022-07 release of the Contest API spec.</li>
+<li>Dropped Java 8 support (now Java 11 minimum, and Java 17 recommended).</li>
+<li>Updated dependencies: Liberty, SnakeYaml, VLCJ, AdminLTE.</li>
 <li>CDS:
 <ul>
+<li>Everything (almost) is now over HTTPS (with redirects).</li>
 <li>User accounts are now defined via accounts.yaml or .json.</li>
+<li>Support for OGG video (for now, enabled via ICPC_OGG=true system property)</li>
+<li>Contest comparison includes all contest types.</li>
+</ul>
+</li>
+<li>Presentation client:
+<ul>
+<li>New animated splash screen.</li>
+<li>New key bindings. e.g. Ctrl-D to see fps, #s for paging scoreboards.</li>
+<li>Commentary presentation formatting improved.</li>
 </ul>
 </li>
 <li>Balloon utility:
 <ul>
 <li>Don&rsquo;t print balloons by default when problem UUID matches another solved problem.</li>
+<li>Switched to AWT printing to avoid issues on Linux.</li>
+</ul>
+</li>
+<li>Coach view:
+<ul>
+<li>Support for Ogg video.</li>
 </ul>
 </li>
 </ul>
@@ -507,7 +521,7 @@
 
     <footer class="main-footer">
     <strong>Copyright &copy; the ICPC</strong> -
-    Generated on Wednesday 26 October 2022 13:30:08 UTC
+    Generated on Thursday 27 October 2022 07:51:41 UTC
 </footer>
 
 </body>
