@@ -28,7 +28,7 @@
 <meta itemprop="description" content="View the changelog of the ICPC Tools">
 <meta itemprop="datePublished" content="2021-01-08T20:43:00+01:00" />
 <meta itemprop="dateModified" content="2021-01-08T20:43:00+01:00" />
-<meta itemprop="wordCount" content="1337">
+<meta itemprop="wordCount" content="1465">
 
 
 
@@ -158,8 +158,40 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p>You can find the changelog of the ICPC Tools below. It is automatically updated when a new build is created.</p>
-<h4 id="v26---tbd">V2.6 - TBD</h4>
+<h4 id="v26---november-2025">V2.6 - November 2025</h4>
 <hr>
+<ul>
+<li>Supports the 2023-06 release of the Contest API spec.
+<ul>
+<li>Includes most compatible features of the future spec.</li>
+</ul>
+</li>
+<li>Dropped Java 11 support (now Java 17 minimum, newer LTS recommended).</li>
+<li>Support for scoring contests.</li>
+<li>Lots of fixes from use at several regional and World Finals contests.</li>
+<li>CDS:
+<ul>
+<li>Disk scanning to keep file references in sync (detect files added or removed on disk).</li>
+<li>Improved mime types for file refs.</li>
+<li>Token authentication for file references.</li>
+<li>Ability to stream different video formats at once.</li>
+<li>Partial support for HLS video.</li>
+</ul>
+</li>
+<li>Presentations:
+<ul>
+<li>Improved support for SVGs logos.</li>
+<li>Reduced memory use for contests with large logos (soft references).</li>
+</ul>
+</li>
+<li>Resolver:
+<ul>
+<li>&lsquo;After awards&rsquo;, allowing messages to be included at any point.</li>
+<li>Reduced memory use for contests with large logos (soft references).</li>
+<li>Fixed &ndash;speed parameter and updated docs.</li>
+</ul>
+</li>
+</ul>
 <h4 id="v25---june-2024">V2.5 - June 2024</h4>
 <hr>
 <ul>
@@ -523,7 +555,7 @@
 
     <footer class="main-footer">
     <strong>Copyright &copy; the ICPC</strong> -
-    Generated on Friday 7 November 2025 13:30:30 UTC
+    Generated on Friday 7 November 2025 15:31:36 UTC
 </footer>
 
 </body>
