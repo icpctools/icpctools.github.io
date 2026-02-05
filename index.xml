@@ -72,7 +72,7 @@ A Presentation Client is a single process which displays (rotates between) one o
       
       <guid>https://tools.icpc.global/problem-set-editor/</guid>
       <description>The ICPC Problem Set Editor is a tool for creating and editing problemset.yaml files, which define the list of contest problems and their colors for a Contest Control System (CCS) that supports the CCS Specification.
-Download  The latest stable Problem Set Editor version is 2.6.1331, released on 07 November 2025 at 15:28:31 from commit 0b5e2204.   Download stable release v2.6.1331  The latest prerelease is v2.7.1346, built on 15 January 2026 at 19:49:11 from commit 83535631.</description>
+Download  The latest stable Problem Set Editor version is 2.6.1331, released on 07 November 2025 at 15:28:31 from commit 0b5e2204.   Download stable release v2.6.1331  The latest prerelease is v2.7.1347, built on 05 February 2026 at 19:09:42 from commit 250671ca.</description>
     </item>
     
     <item>
@@ -82,7 +82,7 @@ Download  The latest stable Problem Set Editor version is 2.6.1331, released on 
       
       <guid>https://tools.icpc.global/contest-utils/</guid>
       <description>The contest utilities provide a number of tools for working with contest data, contest control systems, and the contest data server.
-Download  The latest stable Contest Utilities version is 2.6.1331, released on 07 November 2025 at 15:28:31 from commit 0b5e2204.   Download stable release v2.6.1331  The latest prerelease is v2.7.1346, built on 15 January 2026 at 19:49:11 from commit 83535631.   Download prerelease build v2.7.1346 Documentation  The Contest Utilities documentation can also be downloaded.</description>
+Download  The latest stable Contest Utilities version is 2.6.1331, released on 07 November 2025 at 15:28:31 from commit 0b5e2204.   Download stable release v2.6.1331  The latest prerelease is v2.7.1347, built on 05 February 2026 at 19:09:42 from commit 250671ca.   Download prerelease build v2.7.1347 Documentation  The Contest Utilities documentation can also be downloaded.</description>
     </item>
     
     <item>
@@ -102,7 +102,7 @@ V2.7 - ??  V2.6 - November 2025   Supports the 2023-06 release of the Contest AP
       
       <guid>https://tools.icpc.global/all-builds/</guid>
       <description>Below you will find all the available builds for the ICPC Tools. Most builds also have a .sha256 and .sha512 file, which can be used to validate the downloads.
-  Version 2.7.1346   Build date 15 January 2026   Build time 19:49:11   Commit 83535631      Tool Size Downloads     CDS (Open Liberty) 121.82 MB  wlp.CDS-2.7.1346.zip (sha256, sha512)    CDS (WAR only) 30.</description>
+  Version 2.7.1347   Build date 05 February 2026   Build time 19:09:42   Commit 250671ca      Tool Size Downloads     CDS (Open Liberty) 121.82 MB  wlp.CDS-2.7.1347.zip (sha256, sha512)    CDS (WAR only) 30.</description>
     </item>
     
   </channel>
