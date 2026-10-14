@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+	a {
+		@apply text-sky-700 hover:underline dark:text-sky-400;
+	}
+}
+
+@utility prose {
+	--tw-prose-links: var(--color-sky-700);
+	--tw-prose-invert-links: var(--color-sky-400);
+
+	a {
+		font-weight: inherit;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	code::before,
+	code::after {
+		content: none;
+	}
+}
