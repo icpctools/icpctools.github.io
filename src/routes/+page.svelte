@@ -9,10 +9,10 @@
 	let { data } = $props();
 </script>
 
-{#snippet version(label: string, repo: Repo, toolname: string, release?: Release)}
+{#snippet version(repo: Repo, toolname: string, release?: Release)}
 	{#if release}
 		{@const d = release.downloads[toolname]}
-		<dt class="text-gray-500">{label}</dt>
+		<dt class="text-gray-500">{release.prerelease ? 'Pre-release' : 'Release'}</dt>
 		<dd>
 			<a href={d?.file ? downloadUrl(repo, release, d.file) : releaseUrl(repo, release)}
 				>v{d?.version ?? release.version}</a
@@ -69,8 +69,8 @@
 			</h3>
 			<p class="mb-3 text-gray-600 dark:text-gray-400">{tool.tagline}</p>
 			<dl class="mb-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
-				{@render version('Release', tool.repo, tool.toolname, data.latest[tool.repo].stable)}
-				{@render version('Latest build', tool.repo, tool.toolname, data.latest[tool.repo].prerelease)}
+				{@render version(tool.repo, tool.toolname, data.latest[tool.repo].release)}
+				{@render version(tool.repo, tool.toolname, data.latest[tool.repo].prerelease)}
 				<dt class="text-gray-500">Documentation</dt>
 				<dd><a href={fileUrl(tool.repo, tool.readme)}>README</a></dd>
 			</dl>

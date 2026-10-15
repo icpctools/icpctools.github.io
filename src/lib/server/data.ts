@@ -9,7 +9,7 @@ export const fetched = data.fetched;
 
 export function latest(repo: Repo): Latest {
 	return {
-		stable: releases[repo].find((r) => !r.prerelease),
+		release: releases[repo].find((r) => !r.prerelease),
 		prerelease: releases[repo].find((r) => r.prerelease)
 	};
 }
