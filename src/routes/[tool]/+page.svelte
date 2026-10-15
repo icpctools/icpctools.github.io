@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import Button from '$lib/components/Button.svelte';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import ToolRelease from '$lib/components/ToolRelease.svelte';
 	import { fileUrl } from '$lib/releases';
@@ -21,17 +20,11 @@
 	{@html tool.body}
 
 	<h2>Download</h2>
-	{#if latest.stable}
-		<ToolRelease repo={tool.repo} toolname={tool.toolname} name={tool.name} release={latest.stable} />
+	{#if latest.release}
+		<ToolRelease repo={tool.repo} toolname={tool.toolname} name={tool.name} release={latest.release} />
 	{/if}
 	{#if latest.prerelease}
-		<ToolRelease
-			repo={tool.repo}
-			toolname={tool.toolname}
-			name={tool.name}
-			release={latest.prerelease}
-			prerelease
-		/>
+		<ToolRelease repo={tool.repo} toolname={tool.toolname} name={tool.name} release={latest.prerelease} />
 	{/if}
 
 	<p>Documentation: <a href={fileUrl(tool.repo, tool.readme)}>README</a></p>

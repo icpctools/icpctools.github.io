@@ -20,6 +20,6 @@ export interface Release {
 }
 
 export interface Latest {
-	stable?: Release;
+	release?: Release;
 	prerelease?: Release;
 }

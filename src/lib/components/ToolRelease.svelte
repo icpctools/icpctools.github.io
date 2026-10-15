@@ -8,9 +8,8 @@
 		repo,
 		toolname,
 		name,
-		release,
-		prerelease = false
-	}: { repo: Repo; toolname: string; name: string; release: Release; prerelease?: boolean } =
+		release
+	}: { repo: Repo; toolname: string; name: string; release: Release } =
 		$props();
 
 	let download = $derived(release.downloads[toolname]);
@@ -24,18 +23,18 @@
 		<Button
 			href={downloadUrl(repo, release, download.file)}
 			icon="fas fa-download"
-			variant={prerelease ? 'danger' : 'primary'}
+			variant={release.prerelease ? 'danger' : 'primary'}
 		>
-			Download {prerelease ? 'latest build' : 'release'} v{version}
+			Download {release.prerelease ? 'pre-release' : 'release'} v{version}
 		</Button> {formatDate(release.created)} at {formatTime(release.created)}
 	{:else}
 		<!-- Release has no download for this tool -->
 		<Button
 			href={releaseUrl(repo, release)}
 			icon="fab fa-github"
-			variant={prerelease ? 'danger' : 'primary'}
+			variant={release.prerelease ? 'danger' : 'primary'}
 		>
-			View {prerelease ? 'latest build' : 'release'} v{version}
+			View {release.prerelease ? 'pre-release' : 'release'} v{version}
 		</Button> {formatDate(release.created)} at {formatTime(release.created)}
 	{/if}
 </p>
