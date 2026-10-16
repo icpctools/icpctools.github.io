@@ -1,32 +1,27 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 	import CopyCommand from '$lib/components/CopyCommand.svelte';
-	import { downloadUrl, formatDate, formatTime, npmUrl, pkgName, releaseUrl } from '$lib/releases';
-	import type { Release, Repo } from '$lib/types';
+	import { downloadUrl, formatDate, npmUrl, pkgName, readmeUrl, releaseUrl } from '$lib/releases';
+	import type { Tool } from '$lib/tools';
+	import type { Release } from '$lib/types';
 
-	let {
-		repo,
-		toolname,
-		name,
-		release
-	}: { repo: Repo; toolname: string; name: string; release: Release } =
-		$props();
+	let { tool, release }: { tool: Tool; release: Release } = $props();
 
-	let download = $derived(release.downloads[toolname]);
-	let images = $derived(release.images[toolname]);
-	let npm = $derived(release.npm[toolname] ?? []);
-	let version = $derived(download?.version ?? release.version);
+	let repo = $derived(tool.repo);
+
+	let download = $derived(release.downloads[0]);
+	let npm = $derived(release.npm);
 </script>
 
 <p class="not-prose">
-	{#if download?.file}
+	{#if download}
 		<Button
 			href={downloadUrl(repo, release, download.file)}
 			icon="fas fa-download"
 			variant={release.prerelease ? 'danger' : 'primary'}
 		>
-			Download {release.prerelease ? 'pre-release' : 'release'} v{version}
-		</Button> {formatDate(release.created)} at {formatTime(release.created)}
+			Download {release.prerelease ? 'pre-release' : 'release'} v{release.version}
+		</Button> {formatDate(release.created)}
 	{:else}
 		<!-- Release has no download for this tool -->
 		<Button
@@ -34,13 +29,14 @@
 			icon="fab fa-github"
 			variant={release.prerelease ? 'danger' : 'primary'}
 		>
-			View {release.prerelease ? 'pre-release' : 'release'} v{version}
-		</Button> {formatDate(release.created)} at {formatTime(release.created)}
+			View {release.prerelease ? 'pre-release' : 'release'} v{release.version}
+		</Button> {formatDate(release.created)}
 	{/if}
+	&middot; <a href={readmeUrl(tool, release)}>README</a>
 </p>
-{#if images}
-	<p>{download?.file ? 'Or pull' : 'Pull'} the container image:</p>
-	<div class="not-prose mb-4"><CopyCommand command="podman/docker pull {images}" /></div>
+{#if release.image}
+	<p>{download ? 'Or pull' : 'Pull'} the container image:</p>
+	<div class="not-prose mb-4"><CopyCommand command="podman/docker pull {release.image}" /></div>
 {/if}
 {#if npm.length}
 	<p>

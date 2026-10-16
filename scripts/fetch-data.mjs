@@ -7,7 +7,7 @@
 //
 // Set GITHUB_TOKEN to avoid the 60 requests/hour unauthenticated rate limit.
 
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,15 +18,27 @@ const args = process.argv.slice(2);
 const ICPCTOOLS_REPO = 'icpctools/icpctools';
 const TEAM_VIEW_REPO = 'icpctools/team-view';
 
-// Container images published on ghcr.io for each release, tagged by version, keyed by repo and then tool
-const CONTAINER_IMAGES = {
-	[ICPCTOOLS_REPO]: { 'wlp.CDS': 'icpctools/cds' },
-	[TEAM_VIEW_REPO]: { 'team-view': 'icpctools/team-view' }
-};
-
-// npm packages published on npmjs.com for each release, by version, keyed by repo and then tool
-const NPM_PACKAGES = {
-	[TEAM_VIEW_REPO]: { 'team-view': ['@icpctools/contest-api', '@icpctools/contest-ui'] }
+// Tools shown on the site, keyed by slug (matching src/lib/tools.ts), and the release artifacts that
+// belong to each: zip assets by prefix (the first is the main download; give them labels when there are
+// several), a container image on ghcr.io tagged by version, and npm packages published by version
+const TOOLS = {
+	cds: {
+		repo: ICPCTOOLS_REPO,
+		zips: { 'wlp.CDS': 'Open Liberty', CDS: 'WAR only' },
+		image: 'icpctools/cds'
+	},
+	resolver: { repo: ICPCTOOLS_REPO, zips: ['resolver'] },
+	'pres-admin': { repo: ICPCTOOLS_REPO, zips: ['presentationAdmin'] },
+	'pres-client': { repo: ICPCTOOLS_REPO, zips: ['presentations'] },
+	'balloon-util': { repo: ICPCTOOLS_REPO, zips: ['balloonUtil'] },
+	'coach-view': { repo: ICPCTOOLS_REPO, zips: ['coachview'] },
+	'contest-utils': { repo: ICPCTOOLS_REPO, zips: ['contestUtil'] },
+	'team-view': {
+		repo: TEAM_VIEW_REPO,
+		zips: ['team-view'],
+		image: 'icpctools/team-view',
+		npm: ['@icpctools/contest-api', '@icpctools/contest-ui']
+	}
 };
 
 async function github(url) {
@@ -77,77 +89,86 @@ async function npmVersions(name) {
 	return new Set(Object.keys((await r.json()).versions));
 }
 
-function release(release, images, packages) {
-	const downloads = {};
+/** A GitHub release, with its zip assets grouped by prefix */
+function repoRelease(release) {
+	const zips = {};
 	for (const asset of release.assets) {
 		const m = asset.name.match(assetPattern);
 		if (!m) continue;
 		const { tool, version, check } = m.groups;
-		const d = (downloads[tool] ??= { version, file: '', size: 0, checks: [] });
+		const z = (zips[tool] ??= { version, file: '', size: 0, checks: [] });
 		if (!check) {
-			d.file = asset.name;
-			d.size = Math.round((asset.size / 1024 / 1024) * 100) / 100;
+			z.file = asset.name;
+			z.size = Math.round((asset.size / 1024 / 1024) * 100) / 100;
 		} else {
-			d.checks.push(check);
+			z.checks.push(check);
 		}
 	}
-	const version = release.tag_name.replace(/^v/, '');
 	return {
-		version,
+		version: release.tag_name.replace(/^v/, ''),
 		tag: release.tag_name,
 		created: release.created_at,
 		prerelease: release.prerelease,
-		downloads,
-		images: Object.fromEntries(
-			images.filter((i) => i.tags.has(version)).map((i) => [i.tool, `ghcr.io/${i.image}:${version}`])
-		),
-		npm: Object.fromEntries(
-			Object.entries(Object.groupBy(packages.filter((p) => p.versions.has(version)), (p) => p.tool)).map(
-				([tool, ps]) => [tool, ps.map((p) => `${p.name}@${version}`)]
-			)
-		)
+		zips
 	};
 }
 
-async function repoReleases(repo) {
-	const [releases, images, packages] = await Promise.all([
-		allReleases(repo),
-		Promise.all(
-			Object.entries(CONTAINER_IMAGES[repo] ?? {}).map(async ([tool, image]) => ({
-				tool,
-				image,
-				tags: await containerTags(image)
-			}))
-		),
-		Promise.all(
-			Object.entries(NPM_PACKAGES[repo] ?? {}).flatMap(([tool, names]) =>
-				names.map(async (name) => ({ tool, name, versions: await npmVersions(name) }))
-			)
-		)
+/** A tool's releases: the repo releases that contain any of its artifacts */
+async function toolReleases({ zips, image, npm = [] }, repoReleases) {
+	const [tags, packages] = await Promise.all([
+		image && containerTags(image),
+		Promise.all(npm.map(async (name) => ({ name, versions: await npmVersions(name) })))
 	]);
-	return releases.map((r) => release(r, images, packages));
+	const prefixes = Array.isArray(zips) ? zips.map((z) => [z]) : Object.entries(zips);
+	return repoReleases.flatMap((r) => {
+		const downloads = prefixes.flatMap(([prefix, name]) => {
+			const z = r.zips[prefix];
+			return z?.file ? [{ ...(name && { name }), ...z }] : [];
+		});
+		const release = {
+			// Zips may be versioned differently from the release tag
+			version: downloads[0]?.version ?? r.version,
+			tag: r.tag,
+			created: r.created,
+			prerelease: r.prerelease,
+			downloads: downloads.map(({ version, ...d }) => d),
+			...(tags?.has(r.version) && { image: `ghcr.io/${image}:${r.version}` }),
+			npm: packages.filter((p) => p.versions.has(r.version)).map((p) => `${p.name}@${r.version}`)
+		};
+		return downloads.length || release.image || release.npm.length ? [release] : [];
+	});
 }
 
-if (args.includes('--if-missing') && existsSync(dataFile)) {
-	console.log('Release data already present, skipping fetch (run `pnpm fetch` to refresh)');
+function hasCurrentData() {
+	try {
+		return 'tools' in JSON.parse(readFileSync(dataFile, 'utf8'));
+	} catch {
+		return false;
+	}
+}
+
+if (args.includes('--if-missing') && hasCurrentData()) {
+	console.log('Release data already present, skipping fetch (run `pnpm run fetch` to refresh)');
 	process.exit(0);
 }
 
 try {
 	mkdirSync(dirname(dataFile), { recursive: true });
-	const [icpctools, teamView] = await Promise.all([
-		repoReleases(ICPCTOOLS_REPO),
-		repoReleases(TEAM_VIEW_REPO)
-	]);
-
-	writeFileSync(
-		dataFile,
-		JSON.stringify({ fetched: new Date().toISOString(), releases: { icpctools, 'team-view': teamView } })
+	const repos = [...new Set(Object.values(TOOLS).map((t) => t.repo))];
+	const releases = Object.fromEntries(
+		await Promise.all(repos.map(async (repo) => [repo, (await allReleases(repo)).map(repoRelease)]))
 	);
+	const tools = Object.fromEntries(
+		await Promise.all(
+			Object.entries(TOOLS).map(async ([slug, tool]) => [slug, await toolReleases(tool, releases[tool.repo])])
+		)
+	);
+
+	writeFileSync(dataFile, JSON.stringify({ fetched: new Date().toISOString(), tools }));
 	console.log('Wrote src/lib/data/releases.json');
 } catch (e) {
 	// Keep building with previously fetched data if GitHub is unavailable (e.g. rate limited)
-	if (existsSync(dataFile)) {
+	if (hasCurrentData()) {
 		console.warn(`Failed to refresh release data, using existing data: ${e.message}`);
 	} else {
 		console.error(e);

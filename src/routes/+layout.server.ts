@@ -1,7 +1,8 @@
 import { fetched, latest } from '$lib/server/data';
+import { tools } from '$lib/tools';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = () => ({
-	latest: { icpctools: latest('icpctools'), 'team-view': latest('team-view') },
+	latest: Object.fromEntries(tools.map((t) => [t.slug, latest(t.slug)])),
 	fetched
 });

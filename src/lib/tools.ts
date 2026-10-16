@@ -11,8 +11,6 @@ export interface Tool {
 	description: string;
 	/** GitHub repo the tool is released from */
 	repo: Repo;
-	/** Key into a release's downloads (the zip prefix) */
-	toolname: string;
 	/** Path to the tool's README.md within its repo */
 	readme: string;
 	/** Page content */
@@ -30,7 +28,6 @@ export const tools: Tool[] = [
 		description:
 			'The Contest Data Server is a software component designed to allow secure, authenticated HTTP connections to contest data residing on a contest network',
 		repo: 'icpctools',
-		toolname: 'wlp.CDS',
 		readme: 'CDS/README.md',
 		body: `
 <p>The Contest Data Server (CDS) is a software component designed to allow secure,
@@ -68,7 +65,6 @@ required and that the CA configures their use into the CDS) include:</p>
 		description:
 			'The ICPC Resolver is a tool for graphical animation of contest results. It shows the final runs submitted during a contest in an interesting way, and leads up to display of the award winners',
 		repo: 'icpctools',
-		toolname: 'resolver',
 		readme: 'Resolver/README.md',
 		body: `
 <p>The <em>ICPC Resolver</em> is a tool for graphical animation of contest results.
@@ -116,7 +112,6 @@ process, and controlling simultaneous Resolver operations at multiple contest si
 		description:
 			'The Presentation Admin is one of the components comprising the ICPC Presentation System',
 		repo: 'icpctools',
-		toolname: 'presentationAdmin',
 		readme: 'PresAdmin/README.md',
 		body: `
 <p>The <em>Presentation Admin</em> is one of the components
@@ -154,7 +149,6 @@ hence work with the Presentation System.</p>`
 		description:
 			'The ICPC Presentation System provides a mechanism for generating slide show presentations containing user-provided images, photos, and a variety of live data from a running contest',
 		repo: 'icpctools',
-		toolname: 'presentations',
 		readme: 'PresContest/README.md',
 		body: `
 <p>The ICPC Presentation System provides a mechanism for generating "slide show" presentations containing
@@ -189,7 +183,6 @@ and so forth.</p>`
 		description:
 			'The ICPC Balloon Utility is a tool for keeping track of balloons earned by contest teams for successful run submissions',
 		repo: 'icpctools',
-		toolname: 'balloonUtil',
 		readme: 'BalloonUtility/README.md',
 		body: `
 <p>The ICPC Balloon Utility (BU) is a tool for keeping track of balloons earned by contest teams
@@ -210,7 +203,6 @@ for configuring it to do that are beyond the scope of this introductory guide).<
 		description:
 			"The Coach View is a software component designed to provide the ability for spectators to view either or both of a selected team's desktop or web camera during a contest",
 		repo: 'icpctools',
-		toolname: 'coachview',
 		readme: 'CoachView/README.md',
 		body: `
 <p>The Coach View is a software component designed to provide the ability for spectators
@@ -233,7 +225,6 @@ and is a direct replacement for the Coach View when run in kiosk mode.</p>`
 		description:
 			'The contest utilities provide a number of tools for working with contest data, contest control systems, and the contest data server',
 		repo: 'icpctools',
-		toolname: 'contestUtil',
 		readme: 'ContestUtil/README.md',
 		body: `
 <p>The contest utilities provide a number of tools for working with contest data, contest control systems, and the contest
@@ -248,7 +239,6 @@ data server.</p>`
 		description:
 			'Team View is a web application for watching ICPC programming contests: see the teams, track how they are doing, view the scoreboard, or watch live webcam and desktop feeds',
 		repo: 'team-view',
-		toolname: 'team-view',
 		readme: 'README.md',
 		body: `
 <p>Team View is a web application for watching ICPC programming contests. It allows you to see

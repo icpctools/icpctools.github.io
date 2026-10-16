@@ -2,20 +2,20 @@
 	import { base } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import { downloadUrl, fileUrl, formatDate, formatTime, releaseUrl } from '$lib/releases';
+	import { downloadUrl, formatDate, formatTime, readmeUrl, releaseUrl } from '$lib/releases';
 	import type { Release, Repo } from '$lib/types';
 	import { tools } from '$lib/tools';
 
 	let { data } = $props();
 </script>
 
-{#snippet version(repo: Repo, toolname: string, release?: Release)}
+{#snippet version(repo: Repo, release?: Release)}
 	{#if release}
-		{@const d = release.downloads[toolname]}
+		{@const d = release.downloads[0]}
 		<dt class="text-gray-500">{release.prerelease ? 'Pre-release' : 'Release'}</dt>
 		<dd>
-			<a href={d?.file ? downloadUrl(repo, release, d.file) : releaseUrl(repo, release)}
-				>v{d?.version ?? release.version}</a
+			<a href={d ? downloadUrl(repo, release, d.file) : releaseUrl(repo, release)}
+				>v{release.version}</a
 			>
 		</dd>
 	{/if}
@@ -68,11 +68,13 @@
 				{tool.name}
 			</h3>
 			<p class="mb-3 text-gray-600 dark:text-gray-400">{tool.tagline}</p>
-			<dl class="mb-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
-				{@render version(tool.repo, tool.toolname, data.latest[tool.repo].release)}
-				{@render version(tool.repo, tool.toolname, data.latest[tool.repo].prerelease)}
-				<dt class="text-gray-500">Documentation</dt>
-				<dd><a href={fileUrl(tool.repo, tool.readme)}>README</a></dd>
+			<dl class="mb-3 grid grid-cols-[auto_auto_1fr] gap-x-3 gap-y-1 text-sm">
+				{@render version(tool.repo, data.latest[tool.slug].release)} <a href={readmeUrl(tool, data.latest[tool.slug].release)}
+						>README</a
+					>
+				{@render version(tool.repo, data.latest[tool.slug].prerelease)} <a href={readmeUrl(tool, data.latest[tool.slug].prerelease)}
+						>README</a
+					>
 			</dl>
 			<a href="{base}/{tool.slug}" class="mt-auto">More information &rarr;</a>
 		</div>

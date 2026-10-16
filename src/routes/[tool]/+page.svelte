@@ -1,16 +1,13 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import BuildList from '$lib/components/BuildList.svelte';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import ToolRelease from '$lib/components/ToolRelease.svelte';
-	import { fileUrl } from '$lib/releases';
+	import { readmeUrl } from '$lib/releases';
 
 	let { data } = $props();
 
 	let tool = $derived(data.tool);
-	let latest = $derived(data.latest[tool.repo]);
-	let buildsHref = $derived(
-		tool.repo === 'icpctools' ? `${base}/all-builds` : `${base}/all-builds/${tool.repo}`
-	);
+	let latest = $derived(data.latest[tool.slug]);
 </script>
 
 <PageTitle title={tool.name} description={tool.description} />
@@ -21,13 +18,17 @@
 
 	<h2>Download</h2>
 	{#if latest.release}
-		<ToolRelease repo={tool.repo} toolname={tool.toolname} name={tool.name} release={latest.release} />
+		<ToolRelease {tool} release={latest.release} />
 	{/if}
 	{#if latest.prerelease}
-		<ToolRelease repo={tool.repo} toolname={tool.toolname} name={tool.name} release={latest.prerelease} />
+		<ToolRelease {tool} release={latest.prerelease} />
 	{/if}
 
-	<p>Documentation: <a href={fileUrl(tool.repo, tool.readme)}>README</a></p>
+	{#if !latest.release && !latest.prerelease}
+		<p>Documentation: <a href={readmeUrl(tool)}>README</a></p>
+	{/if}
 
-	<p>Older versions are available on the <a href={buildsHref}>all builds</a> page.</p>
+	<h2 id="builds">All builds</h2>
 </div>
+
+<BuildList {tool} builds={data.builds} />

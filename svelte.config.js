@@ -34,12 +34,16 @@ const config = {
 			async adapt(builder) {
 				await staticAdapter.adapt(builder);
 				const base = builder.config.kit.paths.base;
-				for (const path of builder.prerendered.pages.keys()) {
+				const targets = [
+					...[...builder.prerendered.pages.keys()].map((path) => [path, path]),
+					...[...builder.prerendered.redirects].map(([path, { location }]) => [path, location])
+				];
+				for (const [path, target] of targets) {
 					const page = path.slice(base.length);
 					if (page === '' || page === '/') continue;
 					const dir = join(pages, page);
 					mkdirSync(dir, { recursive: true });
-					writeFileSync(join(dir, 'index.html'), redirectStub(path));
+					writeFileSync(join(dir, 'index.html'), redirectStub(target));
 				}
 			}
 		},
