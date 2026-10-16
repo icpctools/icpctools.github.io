@@ -1,22 +1,25 @@
 export type Repo = 'icpctools' | 'team-view';
 
-export interface ToolDownload {
-	version: string;
+export interface Download {
+	/** Label to tell the downloads apart, when a tool has several */
+	name?: string;
 	file: string;
 	size: number;
 	checks: string[];
 }
 
+/** A release of a single tool, from a GitHub release of the tool's repo */
 export interface Release {
 	version: string;
 	tag: string;
 	created: string;
 	prerelease: boolean;
-	downloads: Record<string, ToolDownload>;
-	/** Container image references published for this release, keyed by tool */
-	images: Record<string, string>;
-	/** npm package references (name@version) published for this release, keyed by tool */
-	npm: Record<string, string[]>;
+	/** Zip downloads, the main download first */
+	downloads: Download[];
+	/** Container image reference */
+	image?: string;
+	/** npm package references (name@version) */
+	npm: string[];
 }
 
 export interface Latest {

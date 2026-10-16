@@ -9,8 +9,7 @@
 
 	const nav = [
 		{ href: '/', name: 'Home', icon: 'fas fa-home' },
-		...tools.map((t) => ({ href: `/${t.slug}`, name: t.name, icon: t.icon })),
-		{ href: '/all-builds', name: 'All builds', icon: 'fas fa-download' }
+		...tools.map((t) => ({ href: `/${t.slug}`, name: t.name, icon: t.icon }))
 	];
 
 	let menuOpen = $state(false);

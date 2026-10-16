@@ -14,11 +14,13 @@ or any static file server. It shows the same tool and release data as the origin
 - all [icpctools releases](https://github.com/icpctools/icpctools/releases) and their zip assets
 - all [team-view releases](https://github.com/icpctools/team-view/releases) and their zip assets
 
-Both repos are handled the same way: release assets named `<tool>-<version>.zip` (plus optional
-`.sha256`/`.sha512` files) become downloads, e.g. `team-view-0.9.0.zip` for Team View. A release
-without a matching asset links to its GitHub release page instead. Releases also show the CDS and
-Team View container images when a matching version tag exists on ghcr.io (see `CONTAINER_IMAGES` in the script),
-and Team View's npm packages when a matching version exists on npmjs.com (see `NPM_PACKAGES`).
+The data is organized by tool: each tool (keyed by its slug in `src/lib/tools.ts`) has a list of
+releases, configured in `TOOLS` in the script. Both repos are handled the same way: release assets
+named `<prefix>-<version>.zip` (plus optional `.sha256`/`.sha512` files) become downloads for the
+tool with that zip prefix, e.g. `resolver-2.7.1420.zip` for the Resolver. A tool can also have a
+container image (shown when a matching version tag exists on ghcr.io) and npm packages (shown when a
+matching version exists on npmjs.com). A GitHub release only counts as a release of a tool if it
+contains at least one of these for that tool.
 
 Documentation links point to each tool's `README.md` on GitHub (see `readme` in `src/lib/tools.ts`).
 
@@ -29,7 +31,7 @@ the build continues with previously fetched data when there is some.
 
 ```bash
 pnpm install
-pnpm dev        # fetches data on first run only; `pnpm fetch` to refresh
+pnpm dev        # fetches data on first run only; `pnpm run fetch` to refresh
 pnpm build      # fetches data, then builds the static site into build/
 pnpm preview
 pnpm check
