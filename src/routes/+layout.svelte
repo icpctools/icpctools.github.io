@@ -2,10 +2,10 @@
 	import '../app.css';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
+	import { formatDate, formatTime } from '$lib/releases';
 	import { tools } from '$lib/tools';
-	import { REPOS } from '$lib/releases';
 
-	let { children } = $props();
+	let { data, children } = $props();
 
 	const nav = [
 		{ href: '/', name: 'Home', icon: 'fas fa-home' },
@@ -84,11 +84,12 @@
 			</button>
 			<div class="flex-1"></div>
 			<a
-				href={REPOS.icpctools}
+				href="https://join.slack.com/t/icpctools/shared_invite/zt-wti6k1r6-t25~VYEcyKbVn4Vj_ecBLA"
 				class="rounded p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-				aria-label="GitHub"
+				aria-label="Slack"
+				title="Join us on Slack"
 			>
-				<i class="fab fa-github"></i>
+				<i class="fab fa-slack"></i>
 			</a>
 			<button
 				class="rounded p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
@@ -104,9 +105,12 @@
 		</main>
 
 		<footer
-			class="border-t border-gray-200 bg-white px-6 py-3 text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+			class="flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-gray-200 bg-white px-6 py-3 text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
 		>
-			All ICPC Tools are Copyright &copy; by the ICPC.
+			<span>All ICPC Tools are Copyright &copy; by the ICPC.</span>
+			<span>
+				Data updated {formatDate(data.fetched)} at {formatTime(data.fetched)} UTC.
+			</span>
 		</footer>
 	</div>
 </div>
