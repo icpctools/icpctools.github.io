@@ -1,15 +1,14 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import Button from '$lib/components/Button.svelte';
 	import PageTitle from '$lib/components/PageTitle.svelte';
-	import { downloadUrl, formatDate, formatTime, readmeUrl, releaseUrl } from '$lib/releases';
-	import type { Release, Repo } from '$lib/types';
+	import { downloadUrl, readmeUrl, releaseUrl } from '$lib/releases';
+	import type { Release } from '$lib/types';
 	import { tools } from '$lib/tools';
 
 	let { data } = $props();
 </script>
 
-{#snippet version(repo: Repo, release?: Release)}
+{#snippet version(repo: string, release?: Release)}
 	{#if release}
 		{@const d = release.downloads[0]}
 		<dt class="text-gray-500">{release.prerelease ? 'Pre-release' : 'Release'}</dt>
@@ -28,14 +27,6 @@
 
 <div class="prose max-w-none dark:prose-invert">
 	<img src="{base}/img/logo-full.png" alt="ICPC Tools logo" class="float-right ml-4 hidden w-64 sm:block" />
-
-	<div class="not-prose mb-4 flex flex-wrap gap-2">
-		<Button href="https://github.com/icpctools/icpctools" icon="fab fa-github">GitHub</Button>
-		<Button
-			href="https://join.slack.com/t/icpctools/shared_invite/zt-wti6k1r6-t25~VYEcyKbVn4Vj_ecBLA"
-			icon="fab fa-slack">Slack</Button
-		>
-	</div>
 
 	<p>
 		Welcome to the ICPC Tools! This page contains tools from the
@@ -81,10 +72,6 @@
 	{/each}
 </div>
 
-<p class="mb-6 text-sm text-gray-600 dark:text-gray-400">
-	Release data last updated {formatDate(data.fetched)} at {formatTime(data.fetched)} UTC.
-</p>
-
 <div class="prose max-w-none dark:prose-invert">
 	<h2>Disclaimer</h2>
 	<p>
@@ -116,12 +103,11 @@
 
 	<h2>Community</h2>
 	<p>
-		A slack workspace exists to discuss anything and everything ICPC Tools related. It can be found at
-		<a href="https://icpctools.slack.com/">https://icpctools.slack.com/</a>. To join as a new member,
-		use
+		We have a slack workspace to discuss anything and everything ICPC Tools related:
+		<a href="https://icpctools.slack.com/">https://icpctools.slack.com/</a>. To join, sign up
 		<a href="https://join.slack.com/t/icpctools/shared_invite/zt-wti6k1r6-t25~VYEcyKbVn4Vj_ecBLA"
-			>this link to sign up</a
-		>.
+			>here</a
+		>!
 	</p>
 
 	<h2>License</h2>

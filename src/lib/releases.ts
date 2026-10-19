@@ -1,18 +1,18 @@
 import type { Tool } from './tools';
-import type { Release, Repo } from './types';
+import type { Release } from './types';
 
-export const REPOS: Record<Repo, string> = {
-	icpctools: 'https://github.com/icpctools/icpctools',
-	'team-view': 'https://github.com/icpctools/team-view'
-};
+/** GitHub page for a repo in the icpctools org */
+export function repoUrl(repo: string): string {
+	return `https://github.com/icpctools/${repo}`;
+}
 
-export function downloadUrl(repo: Repo, release: Pick<Release, 'tag'>, file: string): string {
-	return `${REPOS[repo]}/releases/download/${release.tag}/${file}`;
+export function downloadUrl(repo: string, release: Pick<Release, 'tag'>, file: string): string {
+	return `${repoUrl(repo)}/releases/download/${release.tag}/${file}`;
 }
 
 /** GitHub page for a file at a git ref (branch, tag, or commit) */
-export function fileUrl(repo: Repo, ref: string, path: string): string {
-	return `${REPOS[repo]}/blob/${ref}/${path}`;
+export function fileUrl(repo: string, ref: string, path: string): string {
+	return `${repoUrl(repo)}/blob/${ref}/${path}`;
 }
 
 /** A tool's README as of a release, or on the main branch */
@@ -20,8 +20,12 @@ export function readmeUrl(tool: Pick<Tool, 'repo' | 'readme'>, release?: Pick<Re
 	return fileUrl(tool.repo, release?.tag ?? 'main', tool.readme);
 }
 
-export function releaseUrl(repo: Repo, release: Pick<Release, 'tag'>): string {
-	return `${REPOS[repo]}/releases/tag/${release.tag}`;
+export function issuesUrl(repo: string): string {
+	return `${repoUrl(repo)}/issues`;
+}
+
+export function releaseUrl(repo: string, release: Pick<Release, 'tag'>): string {
+	return `${repoUrl(repo)}/releases/tag/${release.tag}`;
 }
 
 /** Package name from an npm package reference (name@version) */

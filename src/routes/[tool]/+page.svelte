@@ -2,7 +2,7 @@
 	import BuildList from '$lib/components/BuildList.svelte';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import ToolRelease from '$lib/components/ToolRelease.svelte';
-	import { readmeUrl } from '$lib/releases';
+	import { issuesUrl, readmeUrl } from '$lib/releases';
 
 	let { data } = $props();
 
@@ -10,7 +10,7 @@
 	let latest = $derived(data.latest[tool.slug]);
 </script>
 
-<PageTitle title={tool.name} description={tool.description} />
+<PageTitle title={tool.name} description={tool.description} issues={issuesUrl(tool.repo)} />
 
 <div class="prose max-w-none dark:prose-invert">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from tools.ts -->

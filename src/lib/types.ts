@@ -1,5 +1,3 @@
-export type Repo = 'icpctools' | 'team-view';
-
 export interface Download {
 	/** Label to tell the downloads apart, when a tool has several */
 	name?: string;

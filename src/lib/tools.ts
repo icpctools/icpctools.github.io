@@ -1,5 +1,4 @@
 import { base } from '$app/paths';
-import type { Repo } from './types';
 
 export interface Tool {
 	slug: string;
@@ -9,8 +8,8 @@ export interface Tool {
 	tagline: string;
 	/** Page meta description */
 	description: string;
-	/** GitHub repo the tool is released from */
-	repo: Repo;
+	/** GitHub repo (in the icpctools org) the tool is released from */
+	repo: string;
 	/** Path to the tool's README.md within its repo */
 	readme: string;
 	/** Page content */
