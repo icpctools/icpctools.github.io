@@ -1,3 +1,18 @@
+export interface Tool {
+	/** URL path, from the tool's file name in tools/ */
+	slug: string;
+	name: string;
+	icon: string;
+	/** One-line description */
+	tagline: string;
+	/** GitHub repo (in the icpctools org) the tool is released from */
+	repo: string;
+	/** Path to the tool's README.md within its repo */
+	readme: string;
+	/** Page content, as HTML */
+	body?: string;
+}
+
 export interface Download {
 	/** Label to tell the downloads apart, when a tool has several */
 	name?: string;

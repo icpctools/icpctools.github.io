@@ -3,14 +3,13 @@
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import { formatDate, formatTime } from '$lib/releases';
-	import { tools } from '$lib/tools';
 
 	let { data, children } = $props();
 
-	const nav = [
+	let nav = $derived([
 		{ href: '/', name: 'Home', icon: 'fas fa-home' },
-		...tools.map((t) => ({ href: `/${t.slug}`, name: t.name, icon: t.icon }))
-	];
+		...data.tools.map((t) => ({ href: `/${t.slug}`, name: t.name, icon: t.icon }))
+	]);
 
 	let menuOpen = $state(false);
 	let dark = $state(false);

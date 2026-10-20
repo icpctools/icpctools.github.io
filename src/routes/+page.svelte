@@ -3,7 +3,6 @@
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import { downloadUrl, readmeUrl, releaseUrl } from '$lib/releases';
 	import type { Release } from '$lib/types';
-	import { tools } from '$lib/tools';
 
 	let { data } = $props();
 </script>
@@ -22,7 +21,7 @@
 
 <PageTitle
 	title="Home"
-	description="The ICPC Tools for use at the ICPC World Finals and other programming contests"
+	tagline="The ICPC Tools for use at the ICPC World Finals and other programming contests"
 />
 
 <div class="prose max-w-none dark:prose-invert">
@@ -50,7 +49,7 @@
 </div>
 
 <div class="my-6 grid gap-4 md:grid-cols-2">
-	{#each tools as tool (tool.slug)}
+	{#each data.tools as tool (tool.slug)}
 		<div
 			class="flex flex-col rounded-lg border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800"
 		>

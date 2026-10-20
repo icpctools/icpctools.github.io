@@ -2,8 +2,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import CopyCommand from '$lib/components/CopyCommand.svelte';
 	import { downloadUrl, formatDate, npmUrl, pkgName, readmeUrl, releaseUrl } from '$lib/releases';
-	import type { Tool } from '$lib/tools';
-	import type { Release } from '$lib/types';
+	import type { Tool, Release } from '$lib/types';
 
 	let { tool, release }: { tool: Tool; release: Release } = $props();
 

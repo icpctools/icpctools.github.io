@@ -10,10 +10,10 @@
 	let latest = $derived(data.latest[tool.slug]);
 </script>
 
-<PageTitle title={tool.name} description={tool.description} issues={issuesUrl(tool.repo)} />
+<PageTitle title={tool.name} tagline={tool.tagline} issues={issuesUrl(tool.repo)} />
 
 <div class="prose max-w-none dark:prose-invert">
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from tools.ts -->
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from tools/*.md -->
 	{@html tool.body}
 
 	<h2>Download</h2>
