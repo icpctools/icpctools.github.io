@@ -1,5 +1,4 @@
-import type { Tool } from './tools';
-import type { Release } from './types';
+import type { Release, Tool } from './types';
 
 /** GitHub page for a repo in the icpctools org */
 export function repoUrl(repo: string): string {

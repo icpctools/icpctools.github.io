@@ -17,11 +17,13 @@
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.3",
+		"marked": "^18.1.1",
 		"svelte": "^5.57.2",
 		"svelte-check": "^4.7.6",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^5.9.3",
-		"vite": "^8.3.4"
+		"vite": "^8.3.4",
+		"yaml": "^2.9.1"
 	},
 	"packageManager": "pnpm@12.4.2+sha512-CK3GYTGAJ1x8ntraOdzwjJxhrU5+rzMKTzRh8QKw+QdCNFTRF/mOctR/7wYWBwZE17/8lzpqV/UJCm18NosHyQ=="
 }

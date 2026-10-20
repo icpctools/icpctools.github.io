@@ -7,39 +7,26 @@
 //
 // Set GITHUB_TOKEN to avoid the 60 requests/hour unauthenticated rate limit.
 
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseToolFile } from '../src/lib/server/tool-file.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataFile = join(root, 'src/lib/data/releases.json');
 const args = process.argv.slice(2);
 
-const ICPCTOOLS_REPO = 'icpctools/icpctools';
-const TEAM_VIEW_REPO = 'icpctools/team-view';
-
-// Tools shown on the site, keyed by slug (matching src/lib/tools.ts), and the release artifacts that
-// belong to each: zip assets by prefix (the first is the main download; give them labels when there are
-// several), a container image on ghcr.io tagged by version, and npm packages published by version
-const TOOLS = {
-	cds: {
-		repo: ICPCTOOLS_REPO,
-		zips: { 'wlp.CDS': 'Open Liberty', CDS: 'WAR only' },
-		image: 'icpctools/cds'
-	},
-	resolver: { repo: ICPCTOOLS_REPO, zips: ['resolver'] },
-	'pres-admin': { repo: ICPCTOOLS_REPO, zips: ['presentationAdmin'] },
-	'pres-client': { repo: ICPCTOOLS_REPO, zips: ['presentations'] },
-	'balloon-util': { repo: ICPCTOOLS_REPO, zips: ['balloonUtil'] },
-	'coach-view': { repo: ICPCTOOLS_REPO, zips: ['coachview'] },
-	'contest-utils': { repo: ICPCTOOLS_REPO, zips: ['contestUtil'] },
-	'team-view': {
-		repo: TEAM_VIEW_REPO,
-		zips: ['team-view'],
-		image: 'icpctools/team-view',
-		npm: ['@icpctools/contest-api', '@icpctools/contest-ui']
-	}
-};
+// Tools shown on the site, keyed by slug, from tools/*.md. The frontmatter of each lists the release
+// artifacts that belong to the tool: release assets (zips) by prefix (the first is the main download; give them
+// labels when there are several), a container image on ghcr.io tagged by version, and npm packages
+// published by version
+const toolsDir = join(root, 'tools');
+const TOOLS = Object.fromEntries(
+	readdirSync(toolsDir)
+		.filter((f) => f.endsWith('.md'))
+		.map((f) => parseToolFile(f, readFileSync(join(toolsDir, f), 'utf8')))
+		.map(({ slug, repo, assets = [], image, packages }) => [slug, { repo: `icpctools/${repo}`, assets, image, packages }])
+);
 
 async function github(url) {
 	const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'icpctools-website' };
@@ -114,12 +101,12 @@ function repoRelease(release) {
 }
 
 /** A tool's releases: the repo releases that contain any of its artifacts */
-async function toolReleases({ zips, image, npm = [] }, repoReleases) {
-	const [tags, packages] = await Promise.all([
+async function toolReleases({ assets, image, packages = [] }, repoReleases) {
+	const [tags, npmPackages] = await Promise.all([
 		image && containerTags(image),
-		Promise.all(npm.map(async (name) => ({ name, versions: await npmVersions(name) })))
+		Promise.all(packages.map(async (name) => ({ name, versions: await npmVersions(name) })))
 	]);
-	const prefixes = Array.isArray(zips) ? zips.map((z) => [z]) : Object.entries(zips);
+	const prefixes = Array.isArray(assets) ? assets.map((a) => [a]) : Object.entries(assets);
 	return repoReleases.flatMap((r) => {
 		const downloads = prefixes.flatMap(([prefix, name]) => {
 			const z = r.zips[prefix];
@@ -133,7 +120,7 @@ async function toolReleases({ zips, image, npm = [] }, repoReleases) {
 			prerelease: r.prerelease,
 			downloads: downloads.map(({ version, ...d }) => d),
 			...(tags?.has(r.version) && { image: `ghcr.io/${image}:${r.version}` }),
-			npm: packages.filter((p) => p.versions.has(r.version)).map((p) => `${p.name}@${r.version}`)
+			npm: npmPackages.filter((p) => p.versions.has(r.version)).map((p) => `${p.name}@${r.version}`)
 		};
 		return downloads.length || release.image || release.npm.length ? [release] : [];
 	});
