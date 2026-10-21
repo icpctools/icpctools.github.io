@@ -16,6 +16,14 @@
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from tools/*.md -->
 	{@html tool.body}
 
+	{#if tool.screenshot}
+		<img
+			src={tool.screenshot}
+			alt="{tool.name} screenshot"
+			class="mx-auto max-h-96 rounded-lg border border-gray-200 shadow-sm dark:border-gray-700"
+		/>
+	{/if}
+
 	<h2>Download</h2>
 	{#if latest.release}
 		<ToolRelease {tool} release={latest.release} />
