@@ -11,6 +11,8 @@ export interface Tool {
 	readme: string;
 	/** Page content, as HTML */
 	body?: string;
+	/** Screenshot URL, shown on the tool's page */
+	screenshot?: string;
 }
 
 export interface Download {

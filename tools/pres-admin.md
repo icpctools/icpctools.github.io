@@ -5,6 +5,7 @@ tagline: Remote administration of multiple presentations (requires CDS)
 repo: icpctools
 readme: PresAdmin/README.md
 order: 3
+screenshot: pres-admin.png
 assets: [presentationAdmin]
 ---
 

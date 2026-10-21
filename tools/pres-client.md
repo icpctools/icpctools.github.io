@@ -5,6 +5,7 @@ tagline: Animated display of scoreboard and other contest data
 repo: icpctools
 readme: PresContest/README.md
 order: 4
+screenshot: pres-client.png
 assets: [presentations]
 ---
 

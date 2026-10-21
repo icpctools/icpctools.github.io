@@ -5,6 +5,7 @@ tagline: Manages and prints which teams to award a balloon
 repo: icpctools
 readme: BalloonUtility/README.md
 order: 5
+screenshot: balloon-util.png
 assets: [balloonUtil]
 ---
 

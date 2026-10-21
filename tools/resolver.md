@@ -5,6 +5,7 @@ tagline: Animated reveal of final contest results
 repo: icpctools
 readme: Resolver/README.md
 order: 2
+screenshot: resolver.png
 assets: [resolver]
 ---
 

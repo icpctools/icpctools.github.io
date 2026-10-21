@@ -20,6 +20,7 @@ tagline: Single-point URL services for accessing contest data   # shown on the h
 repo: icpctools                      # GitHub repo in the icpctools org
 readme: CDS/README.md                # path to the tool's README within the repo
 order: 1                             # position on the home page and in the menu
+screenshot: cds.png                  # image in tools/ shown on the tool page (optional)
 assets:                              # release zip prefixes, main download first (optional)
   wlp.CDS: Open Liberty              #   with labels when there are several, otherwise a list:
   CDS: WAR only                      #   assets: [resolver]
