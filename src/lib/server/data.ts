@@ -1,7 +1,7 @@
 // Server-only so the full release history is never bundled into client code. Since every page is
 // prerendered, this only runs at build time and pages pick out just the data they need.
-import data from '$lib/data/releases.json';
-import type { Latest, Release } from '$lib/types';
+import data from '#lib/data/releases.json';
+import type { Latest, Release } from '#lib/types.js';
 
 const releasesByTool = data.tools as Record<string, Release[]>;
 /** When the release data was last fetched */

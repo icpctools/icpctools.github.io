@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { downloadUrl, formatDate, npmUrl, readmeUrl, releaseUrl } from '$lib/releases';
-	import type { Tool, Release } from '$lib/types';
+	import { downloadUrl, formatDate, npmUrl, readmeUrl, releaseUrl } from '#lib/releases.js';
+	import type { Tool, Release } from '#lib/types.js';
 
 	let { tool, builds }: { tool: Tool; builds: Release[] } = $props();
 
