@@ -1,5 +1,5 @@
-import { fetched, latest } from '$lib/server/data';
-import { tools } from '$lib/server/tools';
+import { fetched, latest } from '#lib/server/data.js';
+import { tools } from '#lib/server/tools.js';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = () => ({

@@ -2,7 +2,7 @@
 // Markdown file in tools/ with YAML frontmatter; the file name is the tool's slug. Screenshots sit
 // alongside them in tools/ so they are bundled (and fingerprinted) like any other asset.
 import { marked } from 'marked';
-import type { Tool } from '$lib/types';
+import type { Tool } from '#lib/types.js';
 import { parseToolFile } from './tool-file';
 
 const files = import.meta.glob<string>('/tools/*.md', { query: '?raw', import: 'default', eager: true });

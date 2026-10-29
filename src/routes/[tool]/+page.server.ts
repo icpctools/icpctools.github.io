@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { releases } from '$lib/server/data';
-import { toolPage, tools } from '$lib/server/tools';
+import { releases } from '#lib/server/data.js';
+import { toolPage, tools } from '#lib/server/tools.js';
 import type { EntryGenerator, PageServerLoad } from './$types';
 
 export const entries: EntryGenerator = () => tools.map((t) => ({ tool: t.slug }));

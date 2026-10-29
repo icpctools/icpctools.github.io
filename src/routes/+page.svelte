@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-	import PageTitle from '$lib/components/PageTitle.svelte';
-	import { downloadUrl, readmeUrl, releaseUrl } from '$lib/releases';
-	import type { Release } from '$lib/types';
+	import { resolve } from '$app/paths';
+	import PageTitle from '#lib/components/PageTitle.svelte';
+	import { downloadUrl, readmeUrl, releaseUrl } from '#lib/releases.js';
+	import type { Release } from '#lib/types.js';
 
 	let { data } = $props();
 </script>
@@ -25,7 +25,11 @@
 />
 
 <div class="prose max-w-none dark:prose-invert">
-	<img src="{base}/img/logo-full.png" alt="ICPC Tools logo" class="float-right ml-4 hidden w-64 sm:block" />
+	<img
+		src="{resolve('/img/logo-full.png')}"
+		alt="ICPC Tools logo"
+		class="float-right ml-4 hidden w-64 sm:block"
+	/>
 
 	<p>
 		Welcome to the ICPC Tools! This page contains tools from the
@@ -66,7 +70,7 @@
 						>README</a
 					>
 			</dl>
-			<a href="{base}/{tool.slug}" class="mt-auto">More information &rarr;</a>
+			<a href="{resolve(tool.slug)}" class="mt-auto">More information →</a>
 		</div>
 	{/each}
 </div>

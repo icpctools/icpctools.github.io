@@ -1,8 +1,8 @@
 <script lang="ts">
-	import BuildList from '$lib/components/BuildList.svelte';
-	import PageTitle from '$lib/components/PageTitle.svelte';
-	import ToolRelease from '$lib/components/ToolRelease.svelte';
-	import { issuesUrl, readmeUrl } from '$lib/releases';
+	import BuildList from '#lib/components/BuildList.svelte';
+	import PageTitle from '#lib/components/PageTitle.svelte';
+	import ToolRelease from '#lib/components/ToolRelease.svelte';
+	import { issuesUrl, readmeUrl } from '#lib/releases.js';
 
 	let { data } = $props();
 

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte';
-	import CopyCommand from '$lib/components/CopyCommand.svelte';
-	import { downloadUrl, formatDate, npmUrl, pkgName, readmeUrl, releaseUrl } from '$lib/releases';
-	import type { Tool, Release } from '$lib/types';
+	import Button from '#lib/components/Button.svelte';
+	import CopyCommand from '#lib/components/CopyCommand.svelte';
+	import { downloadUrl, formatDate, npmUrl, pkgName, readmeUrl, releaseUrl } from '#lib/releases.js';
+	import type { Tool, Release } from '#lib/types.js';
 
 	let { tool, release }: { tool: Tool; release: Release } = $props();
 

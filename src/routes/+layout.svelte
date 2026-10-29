@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '../app.css';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { formatDate, formatTime } from '$lib/releases';
+	import { formatDate, formatTime } from '#lib/releases.js';
 
 	let { data, children } = $props();
 
@@ -29,8 +29,7 @@
 	}
 
 	function active(href: string) {
-		const path = page.url.pathname.slice(base.length) || '/';
-		return href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`);
+		return page.url.href.endsWith(href);
 	}
 </script>
 
@@ -40,17 +39,22 @@
 		class:translate-x-0={menuOpen}
 	>
 		<a
-			href="{base}/"
+			href="{resolve('/')}"
 			class="flex items-center gap-3 border-b border-slate-700 px-4 py-3 text-lg font-light text-white hover:no-underline"
 		>
-			<img src="{base}/img/logo.png" alt="" class="h-8 w-8" />
+			<img
+				src="{resolve('/img/logo.png')}"
+				alt=""
+				class="h-8 w-8"
+			/>
+
 			The ICPC Tools
 		</a>
 		<nav class="p-2">
 			{#each nav as item (item.href)}
 				<a
-					href="{base}{item.href}"
-					onclick={() => (menuOpen = false)}
+					href="{resolve(item.href)}"
+					onclick={() => menuOpen = false}
 					class="flex items-center gap-3 rounded px-3 py-2 text-slate-300 hover:bg-slate-700 hover:text-white hover:no-underline dark:text-slate-300"
 					class:!bg-sky-700={active(item.href)}
 					class:!text-white={active(item.href)}
@@ -66,7 +70,7 @@
 		<button
 			class="fixed inset-0 z-20 bg-black/40 lg:hidden"
 			aria-label="Close menu"
-			onclick={() => (menuOpen = false)}
+			onclick={() => menuOpen = false}
 		></button>
 	{/if}
 
@@ -77,10 +81,9 @@
 			<button
 				class="rounded p-2 hover:bg-gray-100 lg:hidden dark:hover:bg-gray-700"
 				aria-label="Open menu"
-				onclick={() => (menuOpen = true)}
-			>
-				<i class="fas fa-bars"></i>
-			</button>
+				onclick={() => menuOpen = true}
+			><i class="fas fa-bars"></i></button>
+
 			<div class="flex-1"></div>
 			<a
 				href="https://join.slack.com/t/icpctools/shared_invite/zt-wti6k1r6-t25~VYEcyKbVn4Vj_ecBLA"
@@ -106,10 +109,8 @@
 		<footer
 			class="flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-gray-200 bg-white px-6 py-3 text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
 		>
-			<span>All ICPC Tools are Copyright &copy; by the ICPC.</span>
-			<span>
-				Data updated {formatDate(data.fetched)} at {formatTime(data.fetched)} UTC.
-			</span>
+			<span>All ICPC Tools are Copyright © by the ICPC.</span>
+			<span>Data updated {formatDate(data.fetched)} at {formatTime(data.fetched)} UTC.</span>
 		</footer>
 	</div>
 </div>
